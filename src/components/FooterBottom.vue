@@ -2,7 +2,7 @@
     <div class="footer-bottom ">
         <div class="container">
             <div class="footer-wrapper d-flex align-items-center justify-content-between">
-                <p>2021 Barcha huquqlar himoyalangan.
+                <p>2022 Barcha huquqlar himoyalangan. &copy;Islom
                 </p>
                 <ul class="pay-link d-flex">
                     <li>

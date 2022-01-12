@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import 'es6-promise/auto'
+import 'es6-promise/auto';
+// import firebase, { getAuth } from 'firebase/auth';
 
 Vue.use(Vuex);
 
@@ -68,8 +69,7 @@ export const store = new Vuex.Store({
         currentProduct: {},
         showModal: false,
         showPopupCart: false,
-        showLoginButton: false,
-        showLogOutButton: false,
+        user: null,
     },
     getters: {
        getAllProducts: state => state.products,
@@ -78,11 +78,12 @@ export const store = new Vuex.Store({
        getShowModal: state => state.showModal,
        getPopupCart: state => state.showPopupCart,
        getShowLoginButton: state => state.showLoginButton,
-       getShowLogOutButton: state => state.showLogOutButton
+       getShowLogOutButton: state => state.showLogOutButton,
+       isLogined: state => state.user !== null,
     },
     mutations: {
         ADD_PRODUCT: (state, product) => {
-            state.cartProducts.push(product);
+            state.cartProducts.push( product );
         },
         REMOVE_PRODUCT: (state, index) => {
             state.cartProducts.splice(index,1);
@@ -101,6 +102,9 @@ export const store = new Vuex.Store({
         },
         SHOW_LOGOUT_BUTTON: (state) => {
             state.showLogOutButton = !state.showLogOutButton;
+        },
+        SET_USER: (state, user) => {
+            state.user = user;
         },
     },
     actions: {
@@ -124,7 +128,11 @@ export const store = new Vuex.Store({
         },
         showLogOutButton: (context ) => {
             context.commit('SHOW_LOGOUT_BUTTON');
-        }
+        },
+        // login: ( {context}, username, password ) => {
+        //     const auth = getAuth();
+        //     await signInWithEmailAndPassword(auth,this.email,this.password);
+        // }
 
     }
 })

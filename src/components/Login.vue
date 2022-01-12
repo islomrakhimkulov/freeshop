@@ -60,10 +60,11 @@ export default {
             let v = this;
             v.xhrRequest = true;
             const auth = getAuth();
-            await signInWithEmailAndPassword(auth,this.email,this.password)
+            
+            signInWithEmailAndPassword(auth,this.email,this.password)
              .then((userCredential) => {
                  const user = userCredential.user;
-                 localStorage.setItem('STORAGE_KEY', JSON.stringify(this.user.accessToken));
+                //  localStorage.setItem('STORAGE_KEY', JSON.stringify(this.user.accessToken));
                  this.$router.push('/');
                  console.log('successfully');
                  console.log(user);

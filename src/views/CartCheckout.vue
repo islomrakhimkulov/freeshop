@@ -25,12 +25,12 @@
 import { mapGetters,mapActions } from 'vuex'
 export default {
     name: 'CartCheckout',
+    data: () => ({}),                                                                                                                   
     computed: {
         ...mapGetters([
             'getProductsInCart'
         ]),
     },
-    data: () => ({}),
     methods: {
         ...mapActions(['removeProduct']),
         hasProduct() {
