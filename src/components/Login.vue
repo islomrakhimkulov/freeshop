@@ -46,7 +46,6 @@
 
 <script>
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-
 oninput="this.setCustomValidity('')"
 export default {
     name: 'Login',
@@ -60,11 +59,10 @@ export default {
             let v = this;
             v.xhrRequest = true;
             const auth = getAuth();
-            
-            signInWithEmailAndPassword(auth,this.email,this.password)
+            await signInWithEmailAndPassword(auth,this.email,this.password)
              .then((userCredential) => {
-                 const user = userCredential.user;
-                //  localStorage.setItem('STORAGE_KEY', JSON.stringify(this.user.accessToken));
+                const user = userCredential.user;
+                // localStorage.setItem('STORAGE_KEY', JSON.stringify(this.user.accessToken));
                  this.$router.push('/');
                  console.log('successfully');
                  console.log(user);

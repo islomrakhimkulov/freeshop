@@ -11,7 +11,7 @@
             </li>
         </ul>
         <div v-if="!hasProduct()" class="checkout-message">
-            <h3>No products...</h3>
+            <h3>Savach bo'sh..</h3>
             <button class="btn btnColor">
                 <router-link to="./">Ortga qaytish</router-link>
             </button>

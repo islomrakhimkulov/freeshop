@@ -1,5 +1,6 @@
 <template>
-     <div class="navbar-wrapper">
+<div>                       
+    <div class="navbar-wrapper">
         <nav class="navbar navbar-expand-lg navbar-light ">
             <div class="container">
                 <router-link to="/" class="navbar-brand mainColor">Freeshop</router-link>
@@ -8,6 +9,7 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+        
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
                             <li class="nav-item active">
                                 <router-link to="/">Bosh Sahifa</router-link>
@@ -23,9 +25,11 @@
                             </li>
                         </ul>
                         <div class="mb-2 mb-lg-0 nav-main-menu d-flex align-items-center justify-content-center me-2">
+         
                             <button class="shopping-button" @click="showPopupCart()">
                                 <i class="fas fa-shopping-cart fa-2x px-1 shooping-cart"></i>
                             </button>
+          
                             <span class="total-quantity" v-if="hasProduct()">
                                 {{ this.getProductsInCart.length }}
                             </span>
@@ -54,26 +58,30 @@
                 autofocus
             >
         </div>
-        <PopupCart class="cart" v-if="getPopupCart"/>
-        <maskBg v-if="getPopupCart" @click="showPopupCart()" />
+        <PopupCart 
+            v-if="popupCart"
+            @closePopup="exitpopup"
+        />     
     </div>
+</div>
+     
 </template>
 
 <script>
 import { getAuth, signOut } from "firebase/auth";
 import { mapGetters, mapActions} from 'vuex';
-import maskBg from '../views/MaskBg.vue';
 import PopupCart from "../views/PopupCart.vue";
 export default {
     name: 'Navbar',
     components: {
-    maskBg,
+    
     PopupCart
 },
     data: () => ({
         showInput: false,
-        showLogOutButton: false,
+        showLogOutButton: true,
         showLoginButton: true,
+        popupCart:false
     }),
     computed: {
         ...mapGetters([
@@ -95,21 +103,23 @@ export default {
                 console.log(error);
             });
         },
-        ...mapActions([
-            "showOrHiddenPopupCart"
+        ...mapActions(["showOrHiddenPopupCart"
         ]),
         showPopupCart() {
-           this.showOrHiddenPopupCart();
-           console.log("clear working");
+           this.popupCart = true;
+           console.log(this.popupCart)
         },
         hasProduct() {
             return this.getProductsInCart.length >=0;
         },
-        
+        exitpopup(){
+            this.popupCart = false;
+            
+        }
     }
 }
 </script>
-
+// LOGINDAN UTISH FUNCTIONIZ QANI
 <style>
 :root {
   --mainColor: #FF1850;

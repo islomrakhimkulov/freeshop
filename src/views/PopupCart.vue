@@ -1,17 +1,17 @@
 <template>
-    <div class="container">
+    <div class="popup_wrapper" ref="popup_wrapper">
         <div class="box">
-            <span v-if="!hasProduct()">No products :</span>
+            <span v-if="!hasProduct()">Savatcha bo'sh :</span>
             <div v-for="(product, index) in getProductsInCart"  :key="index" class="box-item">
                 <img :src="product.images" alt="" class="item-thumb">
                 <h3 class="item-name">{{ product.name }}</h3>
-                <span class="item-amount">Amount: 1</span>
+                <span class="item-amount">Miqdor: 1</span>
                 <span class="item-price">${{ product.price }}</span>
             </div>
             <div class="d-flex justify-content-between align-items-center" v-if="hasProduct()">
                 <span>Total:$ {{ totalPrice()}}</span>
                 <router-link to="/checkout">
-                    <button  class="btn btnColor" @click="showPopupCart">View cart</button>
+                    <button  class="btn btnColor" @click="showPopupCart">Buyurtmalar</button>
                 </router-link>
             </div>
         </div>
@@ -38,11 +38,31 @@ export default {
         },
         remove(index) {
             this.removeProduct(index);
+        },
+        closePopup(){
+          this.$emit('closePopup')
         }
+
     },
+    mounted(){
+      let vm = this;
+      document.addEventListener('click', function (item){
+        if(item.target === vm.$refs['popup_wrapper']) {
+          vm.closePopup()
+        }
+      })
+    }
 }
 </script>
 <style>
+.popup_wrapper{
+  position: absolute;
+  right: 0;
+  top:0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,.5);
+}
     .box {
     width: 400px;
     height: auto;
@@ -51,7 +71,7 @@ export default {
     border-radius: 5px;
     box-sizing: border-box;
     padding: 1em .5em;
-    position: absolute;
+    position: fixed;
     z-index: 1;
   }
 
