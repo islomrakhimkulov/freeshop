@@ -56,16 +56,19 @@ export default {
     }),
     methods: {
         async loginRequest() {
+
             let v = this;
             v.xhrRequest = true;
             const auth = getAuth();
             await signInWithEmailAndPassword(auth,this.email,this.password)
-             .then((userCredential) => {
+             .then( userCredential => {
                 const user = userCredential.user;
-                // localStorage.setItem('STORAGE_KEY', JSON.stringify(this.user.accessToken));
+                if(user.accessToken){
+                     this.$store.commit('btn', false);
+                    //  console.log(this.$store.state.btn)
+                }
                  this.$router.push('/');
-                 console.log('successfully');
-                 console.log(user);
+                //  console.log(user);
                  console.log(user.accessToken);
                  alert(userCredential.user.email);
              })
@@ -76,7 +79,8 @@ export default {
                  alert(" Login yoki parol no'tog'ri qaytadan o'rinib ko'ring");
              })
         }
-    }
+    },
+
 }
 </script>        
 

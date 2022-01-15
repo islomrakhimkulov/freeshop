@@ -1,8 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import 'es6-promise/auto';
-// import firebase, { getAuth } from 'firebase/auth';
-
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
@@ -70,6 +68,7 @@ export const store = new Vuex.Store({
         showModal: false,
         showPopupCart: false,
         user: null,
+        btn : true
     },
     getters: {
        getAllProducts: state => state.products,
@@ -106,6 +105,9 @@ export const store = new Vuex.Store({
         SET_USER: (state, user) => {
             state.user = user;
         },
+        btn(state,value){
+            state.btn = value
+        },
     },
     actions: {
         addProduct: (context, product) => {
@@ -129,10 +131,7 @@ export const store = new Vuex.Store({
         showLogOutButton: (context ) => {
             context.commit('SHOW_LOGOUT_BUTTON');
         },
-        // login: ( {context}, username, password ) => {
-        //     const auth = getAuth();
-        //     await signInWithEmailAndPassword(auth,this.email,this.password);
-        // }
+        
 
     }
 })

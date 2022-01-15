@@ -9,7 +9,7 @@
                 <span class="item-price">${{ product.price }}</span>
             </div>
             <div class="d-flex justify-content-between align-items-center" v-if="hasProduct()">
-                <span>Total:$ {{ totalPrice()}}</span>
+                <span>Jami:$ {{ totalPrice()}}</span>
                 <router-link to="/checkout">
                     <button  class="btn btnColor" @click="showPopupCart">Buyurtmalar</button>
                 </router-link>

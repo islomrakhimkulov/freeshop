@@ -17,7 +17,7 @@
             </button>
         </div>
         <h3 v-if="hasProduct()" class="total">
-            Total: ${{ totalPrice() }}
+            Jami: ${{ totalPrice() }}
         </h3>
     </div>
 </template>

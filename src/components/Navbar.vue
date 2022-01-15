@@ -36,7 +36,7 @@
                             <button class="shopping-search" @click="searchIcon()">
                                 <i class="fas fa-search mx-3"></i>
                             </button>
-                            <button class="btn btnColor" v-if="showLoginButton">
+                            <button class="btn btnColor" v-if="this.$store.state.btn">
                                 <router-link to="/login">Kirish</router-link>
                             </button>
                             <button class="btn btnColor" v-else @click="logOut()">
@@ -79,10 +79,15 @@ export default {
 },
     data: () => ({
         showInput: false,
-        showLogOutButton: true,
+        showLogOutButton: localStorage.getItem('token'),
         showLoginButton: true,
-        popupCart:false
+        popupCart:false,
+        isUser: '' 
     }),
+    created (){
+        console.log(localStorage.getItem('token'))
+        console.log(this.showLogOutButton)
+    },
     computed: {
         ...mapGetters([
             "getProductsInCart",
@@ -94,10 +99,10 @@ export default {
             this.showInput = !this.showInput;
         },
         async logOut() {
-            this.showLogOutButton = true;
+            this.$store.commit('btn', true)
             const auth = getAuth();
             signOut(auth).then(() => {
-                alert('logout')
+                alert('Chiqdingiz')
             })
             .catch((error) => {
                 console.log(error);
