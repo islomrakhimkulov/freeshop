@@ -10,12 +10,12 @@
 </template>
 
 <script>
-import Header from "./Header.vue";
-import Shown from "./Shown.vue";
-import Offer from "./Offer.vue";
-import HomeCategory from "./HomeCategory.vue";
-import ProductsList from "./ProductsList.vue";
-import EmailContactVue from "./EmailContact.vue";
+import Header from "../components/Header.vue";
+import Shown from "../components/Shown.vue";
+import Offer from "../components/Offer.vue";
+import HomeCategory from "../components/HomeCategory.vue";
+import ProductsList from "../components/ProductsList.vue";
+import EmailContactVue from "../components/EmailContact.vue";
 import 'vue-star-rating'
 export default {
   name: 'Home',

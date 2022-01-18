@@ -17,7 +17,7 @@
                                 <span class="product-item-price me-2 py-3">${{ price.toFixed(2) }}</span>
                                 <div class="star-rating">
                                     <star-rating 
-                                        v-model="rating"
+                                        :v-model="rating"
                                         :star-size="20"
                                         :show-rating="false"
                                         :border-width="1"
@@ -25,7 +25,7 @@
                                         active-border-color="#FF9600"
                                         active-color="#FF9600"
                                         inactive-color="#fff"
-                                        padding=1
+                                        :padding="1"
                                     />
                                 </div>
                             </div>

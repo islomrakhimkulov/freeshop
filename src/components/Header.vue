@@ -59,5 +59,9 @@ export default {
     line-height: 24px;
 }
 
-    
+@media screen and (max-width: 990px) {
+    .header-wrapper {
+        background: none ;
+    }
+}
 </style>

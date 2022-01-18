@@ -30,13 +30,13 @@
                             <div class="card-feature-details">
                                 <div class="d-flex flex-column">
                                     <button @click="addProductToCart(product)">
-                                            <i class="fas fa-shopping-cart"></i>
+                                        <i class="fas fa-shopping-cart"></i>
                                     </button>
                                     <button>
-                                                <i class="fas fa-heart"></i>
+                                        <i class="fas fa-heart"></i>
                                     </button>
                                     <button>
-                                            <i class="fas fa-retweet"></i>
+                                        <i class="fas fa-retweet"></i>
                                     </button>
                                 </div>
                             </div>         

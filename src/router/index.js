@@ -5,27 +5,8 @@ import Home from '../views/Home.vue';
 import Login from '../components/Login.vue';
 import Register from '../components/Register.vue';
 import NotFound from '../components/error-pages/NotFound.vue';
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
-import 'firebase/compat/firestore';
 
-import { initializeApp } from 'firebase/app';
-const firebaseConfig = {
-  apiKey: "AIzaSyAssDtKfEhl0YIOnhZeGQ4Nlgu5WadoefU",
-  authDomain: "freeshop-6c9e1.firebaseapp.com",
-  projectId: "freeshop-6c9e1",
-  storageBucket: "freeshop-6c9e1.appspot.com",
-  messagingSenderId: "260074984131",
-  appId: "1:260074984131:web:4b4757adcf1541157c4876",
-  measurementId: "G-WGKK6HERJN"
-};
-const app = initializeApp(firebaseConfig);
-export {app}
-
-firebase.initializeApp(firebaseConfig);
-
-
-
+import { auth } from "@/plugins/firebase";
 
 Vue.use(VueRouter)
 
@@ -33,10 +14,7 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home,
-    meta: {
-     requestAuth: true 
-    }
+    component: Home
   },
   {
     path: '/login',
@@ -108,15 +86,21 @@ const router = new VueRouter({
   routes
 })
 
-router.beforeEach((to,from,next) => {
+router.beforeEach((to, from, next) => {
   const requireAuth = to.matched.some(record => record.meta.requestAuth);
-  const isAuthenticated =firebase.auth().currentUser;
-    if(requireAuth && ! isAuthenticated) {
+
+  if (!requireAuth) {
+    next();
+  }
+
+  auth.onAuthStateChanged((user) => {
+    if (!user) {
       next("/login");
+      return;
     }
-    else { 
-      next();
-    }
+
+    next();
+  });
 })
 
-export default router
+export default router;

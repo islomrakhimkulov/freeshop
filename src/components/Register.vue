@@ -71,10 +71,6 @@ export default {
             const auth = getAuth();
             await createUserWithEmailAndPassword( auth,this.email, this.password)
              .then((userCredential) => {
-                 if(user.accessToken) {
-                     this.$store.commit('btn', false);
-                     console.log(this.$store.state.btn)
-                 }
                 this.showLogOutButton = true;
                 this.showLoginButton = false;
                 this.$router.push('/');

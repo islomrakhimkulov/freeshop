@@ -2,7 +2,7 @@
     <div class="login  shadow text-center" >
         <h2 class="text-uppercase">Kirish</h2>
         <div class="container ">
-            <form action="" id="login-form"  @submit.prevent="loginRequest()">
+            <form id="login-form" @submit.prevent="onSubmit()">
                 <div>
                     <input type="text" 
                         class="login-input" 
@@ -27,10 +27,14 @@
                     >
                 </div>
                 <div class="formButtonGroup">
-                    <button v-if="!xhrRequest" class="btn btnColor">Kirish</button>
-                    <button v-if="xhrRequest" class="btn btnColor">
-                        <span class="spinner-border spinner-border-sm" role="status"></span>
-                        kuting...
+                    <button class="btn btnColor">
+                        <template v-if="loading">
+                            <span class="spinner-border spinner-border-sm" role="status"></span>
+                            Kuting...
+                        </template>
+                        <template v-else>
+                            Kirish
+                        </template>
                     </button>
                     <div class="d-flex justify-content-between align-items-center pt-2">
                         <p>Tarmoqda yangimisiz?</p>
@@ -45,47 +49,50 @@
 </template>
 
 <script>
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-oninput="this.setCustomValidity('')"
+import { mapActions, mapGetters } from 'vuex';
+
+oninput = "this.setCustomValidity('')"
+
 export default {
     name: 'Login',
     data: () => ({
         email: '',
         password: '',
-        xhrRequest: false,
+        loading: false,
     }),
-    methods: {
-        async loginRequest() {
-
-            let v = this;
-            v.xhrRequest = true;
-            const auth = getAuth();
-            await signInWithEmailAndPassword(auth,this.email,this.password)
-             .then( userCredential => {
-                const user = userCredential.user;
-                if(user.accessToken){
-                     this.$store.commit('btn', false);
-                    //  console.log(this.$store.state.btn)
-                }
-                 this.$router.push('/');
-                //  console.log(user);
-                 console.log(user.accessToken);
-                 alert(userCredential.user.email);
-             })
-             .catch( (error) => {
-                 v.xhrRequest = false;
-                 const errorCode = error.code;
-                 console.log('errorCode'+errorCode);
-                 alert(" Login yoki parol no'tog'ri qaytadan o'rinib ko'ring");
-             })
-        }
+    computed: {
+        ...mapGetters(['isUserLogined'])
     },
+    methods: {
+        ...mapActions(["login"]),
+        async onSubmit() {
+            this.loading = true;
 
+            try {
+                await this.login({ email: this.email, password: this.password });
+                this.$router.push('/');
+            } catch (error) {
+                console.error(error.code);
+                console.dir(error);
+            } finally {
+                this.loading = false;
+            }
+        },
+    },
+    beforeRouteEnter(to, from, next) {
+        next((vm) => {
+            if (!vm.isUserLogined) {
+                return;
+            }
+
+            next("/");
+            return false;
+        });
+    }
 }
 </script>        
 
 <style>
-
 .login {
     max-width: 350px;
     width: 100%;
@@ -93,6 +100,7 @@ export default {
     padding: 20px 0;
     border-radius: 5px;
 }
+
 .login h2 {
     color: #333;
     font-size: 32px;
@@ -115,6 +123,7 @@ input[type="password"] {
 input::placeholder{
    color: #333333;
 }
+
 .formButtonGroup {
     margin-top: 10px;
 }

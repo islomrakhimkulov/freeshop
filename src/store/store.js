@@ -1,6 +1,9 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import 'es6-promise/auto';
+import { auth } from "@/plugins/firebase";
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
+
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
@@ -65,8 +68,6 @@ export const store = new Vuex.Store({
         ],
         cartProducts: [],
         currentProduct: {},
-        showModal: false,
-        showPopupCart: false,
         user: null,
         btn : true
     },
@@ -74,11 +75,7 @@ export const store = new Vuex.Store({
        getAllProducts: state => state.products,
        getProductsInCart: state => state.cartProducts,
        getCurrentProduct: state => state.currentProduct,
-       getShowModal: state => state.showModal,
-       getPopupCart: state => state.showPopupCart,
-       getShowLoginButton: state => state.showLoginButton,
-       getShowLogOutButton: state => state.showLogOutButton,
-       isLogined: state => state.user !== null,
+       isUserLogined: state => state.user !== null,
     },
     mutations: {
         ADD_PRODUCT: (state, product) => {
@@ -89,18 +86,6 @@ export const store = new Vuex.Store({
         },
         CURRENT_PRODUCT: (state, product) => {
             state.currentProduct = product
-        },
-        SHOW_MODAL: (state) => {
-            state.showModal = !state.showModal;
-        },
-        SHOW_POPUP_CART: (state) => {
-            state.showPopupCart = !state.showPopupCart;
-        },
-        SHOW_LOGIN_BUTTON: (state) => {
-            state.showLoginButton = !state.showLoginButton;
-        },
-        SHOW_LOGOUT_BUTTON: (state) => {
-            state.showLogOutButton = !state.showLogOutButton;
         },
         SET_USER: (state, user) => {
             state.user = user;
@@ -119,19 +104,13 @@ export const store = new Vuex.Store({
         currentProduct: (context, product) => {
             context.commit('CURRENT_PRODUCT', product);
         },
-        showOrHiddenModal: (context) => {
-            context.commit('SHOW_MODAL');
+        async login({ commit }, { email, password }) {
+            const firebaseUserCredentials = await signInWithEmailAndPassword(auth, email, password);
+            commit("SET_USER", firebaseUserCredentials.user);
         },
-        showOrHiddenPopupCart: (context) => {
-            context.commit('SHOW_POPUP_CART');
-        },
-        showLoginButton: (context) => {
-            context.commit('SHOW_LOGIN_BUTTON');
-        },
-        showLogOutButton: (context ) => {
-            context.commit('SHOW_LOGOUT_BUTTON');
-        },
-        
-
+        async logOut({ commit }) {
+            await signOut(auth);
+            commit("SET_USER", null);
+        }
     }
 })

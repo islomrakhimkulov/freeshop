@@ -29,22 +29,25 @@
                             <button class="shopping-button" @click="showPopupCart()">
                                 <i class="fas fa-shopping-cart fa-2x px-1 shooping-cart"></i>
                             </button>
-          
                             <span class="total-quantity" v-if="hasProduct()">
                                 {{ this.getProductsInCart.length }}
                             </span>
                             <button class="shopping-search" @click="searchIcon()">
                                 <i class="fas fa-search mx-3"></i>
                             </button>
-                            <button class="btn btnColor" v-if="this.$store.state.btn">
-                                <router-link to="/login">Kirish</router-link>
-                            </button>
-                            <button class="btn btnColor" v-else @click="logOut()">
-                                <router-link to="/login">Chiqish</router-link>
-                            </button>
-                            <button class="btn btnColor ms-2">
-                                <router-link to="/register">Ro'yxatdan o'tish</router-link>
-                            </button>
+                            <template v-if="isUserLogined">
+                                <button class="btn btnColor" @click="onLogOutClick">Chiqish</button>
+                            </template>
+                            <template v-else>
+                                <router-link to="/login" 
+                                             custom 
+                                             v-slot="{ navigate }">
+                                    <button class="btn btnColor" @click="navigate">Kirish</button>
+                                </router-link>
+                                <button class="btn btnColor ms-2">
+                                    <router-link to="/register">Ro'yxatdan o'tish</router-link>
+                                </button>
+                            </template>
                         </div>
                 </div>
             </div>
@@ -68,15 +71,12 @@
 </template>
 
 <script>
-import { getAuth, signOut } from "firebase/auth";
 import { mapGetters, mapActions} from 'vuex';
 import PopupCart from "../views/PopupCart.vue";
+
 export default {
     name: 'Navbar',
-    components: {
-    
-    PopupCart
-},
+    components: { PopupCart },
     data: () => ({
         showInput: false,
         showLogOutButton: localStorage.getItem('token'),
@@ -84,47 +84,37 @@ export default {
         popupCart:false,
         isUser: '' 
     }),
-    created (){
-        console.log(localStorage.getItem('token'))
-        console.log(this.showLogOutButton)
-    },
     computed: {
         ...mapGetters([
             "getProductsInCart",
             "getPopupCart",
+            "isUserLogined"
         ])
     },
     methods: {
+        ...mapActions(["logOut"]),
         searchIcon() {
             this.showInput = !this.showInput;
         },
-        async logOut() {
-            this.$store.commit('btn', true)
-            const auth = getAuth();
-            signOut(auth).then(() => {
-                alert('Chiqdingiz')
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        async onLogOutClick() {
+            await this.logOut();
+            this.$router.push("/login");
         },
         ...mapActions(["showOrHiddenPopupCart"
         ]),
         showPopupCart() {
            this.popupCart = true;
-           console.log(this.popupCart)
         },
         hasProduct() {
             return this.getProductsInCart.length >=0;
         },
         exitpopup(){
-            this.popupCart = false;
-            
+            this.popupCart = false;  
         }
     }
 }
 </script>
-// LOGINDAN UTISH FUNCTIONIZ QANI
+
 <style>
 :root {
   --mainColor: #FF1850;
@@ -200,7 +190,7 @@ export default {
 }
 .total-quantity {
       position: absolute !important;
-      right: 235px;
+      right: 110px;
       top: -7px;
       background: var(--mainColor);
       border-radius: 50%;
@@ -208,8 +198,8 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 25px;
-      width: 25px;
+      height: 20px;
+      width: 20px;
       padding: 0.5rem;   
 }
 .navbar-collapse ul {

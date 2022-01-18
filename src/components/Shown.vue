@@ -21,7 +21,7 @@
                                         <span class="card-item-price">$250.00</span>
                                         <div class="star-rating">
                                             <star-rating 
-                                                rating=3
+                                                :rating="3"
                                                 :round-start-rating="false"
                                                 v-model="rating"
                                                 :star-size="20"
@@ -31,7 +31,7 @@
                                                 active-border-color="#FF9600"
                                                 active-color="#FF9600"
                                                 inactive-color="#fff"
-                                                padding=1
+                                                :padding="1"
                                             />
                                         </div>
                                     </div>  
@@ -68,7 +68,7 @@
                                                 active-border-color="#FF9600"
                                                 active-color="#FF9600"
                                                 inactive-color="#fff"
-                                                padding=1
+                                                :padding="1"
                                             />
                                         </div>
                                     </div>  
@@ -105,7 +105,7 @@
                                                 active-border-color="#FF9600"
                                                 active-color="#FF9600"
                                                 inactive-color="#fff"
-                                                padding=1
+                                                :padding="1"
                                             />
                                         </div>
                                     </div>  
@@ -142,7 +142,7 @@
                                                 active-border-color="#FF9600"
                                                 active-color="#FF9600"
                                                 inactive-color="#fff"
-                                                padding=1
+                                                :padding="1"
                                             />
                                         </div>
                                     </div>  
