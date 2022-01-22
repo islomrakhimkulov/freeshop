@@ -2,6 +2,7 @@
   <div class="container">
     <h5>about</h5>
     <ProductItemDetail />
+    
   </div>
 </template>
 <script>
@@ -11,11 +12,5 @@ export default {
   components: {
    ProductItemDetail
   },
-  data: () => ({
-    
-  }),
-  methods: {
-    
-  }
 }
 </script>

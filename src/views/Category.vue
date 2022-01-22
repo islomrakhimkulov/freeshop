@@ -2,7 +2,7 @@
         <div class="container">
             <h5>Category</h5>
         <div class="row">
-            <div class="col-md-3" v-for="product in getAllProducts" :key="product.id">
+            <div class="col-md-3" v-for="product in products" :key="product.id">
                 <div class="card">
                 <div class="card-feature">
                     <img class="card-img-top" :src="product.images" alt="">
@@ -29,42 +29,70 @@
                 <div class="card-feature-details">
                     <div class="d-flex flex-column">
                         <button>
-                                    <i class="fas fa-shopping-cart"></i>
+                            <i class="fas fa-shopping-cart" @click="addProductToCart(product)"></i>
                         </button>
                         <button>
-                                    <i class="fas fa-heart"></i>
+                            <i class="fas fa-heart"></i>
                         </button>
                         <button>
-                                <i class="fas fa-retweet"></i>
+                            <i class="fas fa-retweet"></i>
                         </button>
                     </div>
                 </div>         
             </div>
             </div>
         </div>
-        <!-- <ProductsList :product="getAllProducts"/> -->
         </div>
 </template>
 <script>
-// import ProductsList from '../views/ProductsList.vue';
-import { mapGetters } from 'vuex';
-
+import StarRating from 'vue-star-rating'
+import { mapGetters, mapActions} from 'vuex'
 export default {
     name: 'Help',
     components: {
-        // ProductsList
+        StarRating
     },
     computed: {
-        ...mapGetters([
-            'getAllProducts'
-        ])
-    },
-    props: {
-        product: {
-            type: Object,
-            default: () => ({})
+        rating: {
+            get() {
+                return this.products.rating;
+            },
+            set(value) {
+                this.$emit("rated", value);
+            },
+        },
+        ...mapGetters({
+            products: "getAllProducts",
+        }),
+        routeTo() {
+            return { 
+                name: "ProductItemDetail", 
+                params: { 
+                    id: this.product.id
+                } 
+            };
         }
     },
+    // props: {
+    //     product: {
+    //         type: Object,
+    //         default: () => ({})
+    //     }
+    // },
+    
+    methods: {
+        ...mapActions([
+            "addProduct",
+            "currentProduct",
+        ]),
+        addProductToCart(product) {
+            this.addProduct( product );
+        },
+        addCurrentProduct(product) {
+            this.currentProduct(product);
+        }
+    }
+    
 }
 </script>
 

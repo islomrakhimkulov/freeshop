@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row gy-3">
                 <div class="col-md-3 col-sm-4" v-for="product in products" :key="product.id">
-                    <!-- <router-link to="/product/:id"> -->
+                    <router-link to="/product/:id">
                         <div class="card">
                             <div class="card-feature">
                                 <img class="card-img-top" :src="product.images" alt="">
@@ -41,7 +41,7 @@
                                 </div>
                             </div>         
                         </div>
-                    <!-- </router-link> --> 
+                    </router-link> 
                 </div>
             </div>
         </div>
