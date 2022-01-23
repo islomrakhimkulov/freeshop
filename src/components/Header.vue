@@ -15,16 +15,13 @@
                     </div>
                 </div>
             </div>
-         </div>
+        </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'Header',
-    components: {
-    
-    },
+    name: "Header",
 }
 </script>
 
@@ -32,18 +29,15 @@ export default {
 .header {
     background: linear-gradient(180deg, #ABB8BA 0%, rgba(188, 202, 205, 0.81) 100%) !important;
 }
-
 .header-wrapper {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: bottom right;
   padding: 120px 0;
 }
-
 .banner-content {
     padding: 70px 50px 0px 70px;
 }
-
 .header-content h2{
     font-weight: 600 !important;
     font-size: 54px !important;
@@ -58,7 +52,6 @@ export default {
     font-size: 18px;
     line-height: 24px;
 }
-
 @media screen and (max-width: 990px) {
     .header-wrapper {
         background: none ;

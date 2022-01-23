@@ -28,7 +28,7 @@
                             <h4 class="ps-4 text-uppercase footer-title">Mening profilim</h4>
                             <ul class="d-flex flex-column">
                                 <li><router-link to="/">Sign In</router-link></li>
-                                <li><router-link to="/">View Cart</router-link></li>
+                                <li><router-link to="/checkout">View Cart</router-link></li>
                                 <li><router-link to="/">My Wishlist</router-link></li>
                                 <li><router-link to="/">Track My Order</router-link></li>
                             </ul>
@@ -58,7 +58,7 @@
 
 <script>
 export default {
-    name: 'Footer',
+    name: "Footer",
 }
 </script>
 
@@ -83,7 +83,6 @@ export default {
 .footer-top-inner ul li a:hover {
     color: #333;
 }
-
 /* footer */
 .footer-inner {
     padding: 25px 0;
@@ -106,5 +105,4 @@ export default {
 .footer-inner ul li a:hover {
     color: var(--mainColor);
 }
-
 </style>

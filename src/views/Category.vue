@@ -1,9 +1,9 @@
 <template>
-        <div class="container">
-            <h5>Category</h5>
+    <div class="container">
+        <h5>Category</h5>
         <div class="row">
             <div class="col-md-3" v-for="product in products" :key="product.id">
-                <router-link to="ProductItemDetail">
+                <router-link :to="{name: 'ProductItemDetail', params: { id: product.id }}">
                     <div class="card">
                     <div class="card-feature">
                         <img class="card-img-top" :src="product.images" alt="">
@@ -44,7 +44,7 @@
                 </router-link>
             </div>
         </div>
-        </div>
+    </div>
 </template>
 <script>
 import StarRating from 'vue-star-rating'
@@ -75,13 +75,6 @@ export default {
             };
         }
     },
-    // props: {
-    //     product: {
-    //         type: Object,
-    //         default: () => ({})
-    //     }
-    // },
-    
     methods: {
         ...mapActions([
             "addProduct",
@@ -94,10 +87,5 @@ export default {
             this.currentProduct(product);
         }
     }
-    
 }
 </script>
-
-<style>
-
-</style>

@@ -171,7 +171,7 @@
 <script>
 import StarRating from 'vue-star-rating'
 export default {
-    name: 'Shown',
+    name: "Shown",
     components: {
         StarRating
     },
@@ -198,7 +198,6 @@ export default {
     line-height: 24px;
     letter-spacing: 1.5px;
 }
-
 .selling-text {
     font-weight: 500;
     font-size: 14px;
@@ -211,7 +210,6 @@ export default {
 .card:hover .card-feature-details {
     display: block;
 }
-
 .card-body {
     padding: 0.5rem 0.5rem;
 }
@@ -227,7 +225,6 @@ export default {
     font-size: 18px;
     color: var(--mainColor);
 }
-
 .card-feature-details {
     position:absolute;
     display: none;
@@ -242,6 +239,5 @@ export default {
     color: #fff;
     padding: 5px 6px;
     margin: 5px 0;
-}
-    
+}  
 </style>

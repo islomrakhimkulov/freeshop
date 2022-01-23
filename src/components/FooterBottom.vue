@@ -38,13 +38,9 @@
 
 <script>
 export default {
-    name: 'FooterBottom',
-    components: {
-
-    },
+    name: "FooterBottom",
 }
 </script>
-
 <style>
 .footer-bottom {
     padding: 15px 0 0 0;

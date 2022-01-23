@@ -19,7 +19,7 @@ import EmailContactVue from "../components/EmailContact.vue";
 import 'vue-star-rating';
 import axios from "axios";
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
     Header,
     Shown,

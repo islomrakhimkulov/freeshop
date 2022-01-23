@@ -27,13 +27,13 @@
                 <div class="card-feature-details">
                     <div class="d-flex flex-column">
                         <button>
-                                    <i class="fas fa-shopping-cart"></i>
+                                <i class="fas fa-shopping-cart"></i>
                         </button>
                         <button>
-                                    <i class="fas fa-heart"></i>
+                                <i class="fas fa-heart"></i>
                         </button>
                         <button>
-                                <i class="fas fa-retweet"></i>
+                            <i class="fas fa-retweet"></i>
                         </button>
                     </div>
                 </div>         
@@ -46,7 +46,7 @@
 import StarRating from 'vue-star-rating'
 
 export default {
-    name: 'Card',
+    name: "Card",
     components: {
         StarRating
     },
@@ -56,7 +56,6 @@ export default {
             default: () => ({})
         }
     },
-    data: () => ({}),
     computed: {
         rating: {
             get() {
@@ -77,7 +76,6 @@ export default {
     }
 }
 </script>
-
 <style>
 .cart-data h2 {
     position: relative;
@@ -103,7 +101,6 @@ export default {
 .card:hover {
     box-shadow: 0px 7px 17px rgba(255, 24, 80, 0.4);
 }
-
 .card-body {
     padding: 0.5rem 0.5rem;
 }
@@ -119,7 +116,6 @@ export default {
     font-size: 18px;
     color: var(--mainColor);
 }
-
 .card-feature-details {
     position:absolute;
     display: none;

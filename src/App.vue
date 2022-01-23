@@ -14,7 +14,7 @@ import FooterBottom from "./components/FooterBottom.vue";
 
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     Navbar,
     Footer,
@@ -71,9 +71,4 @@ ul {
     background-color: var(--whiteColor);
     border-radius: 50px;
 }
-/* .navbar a.router-link-exact-active {
-  color: #FF1850 !important;
-} */
-
-
 </style>

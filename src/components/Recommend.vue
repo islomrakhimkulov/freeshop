@@ -10,14 +10,12 @@
 <script>
 import CardData from '../views/CardData.vue';
 export default {
-    name: 'Recommend',
+    name: "Recommend",
     components: {
         CardData,
     },
-    props: {}
 }
 </script>
-
 <style>
 .cardData h2 {
     position: relative;

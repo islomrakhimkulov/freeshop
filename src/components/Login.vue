@@ -47,14 +47,11 @@
         </div>
     </div>
 </template>
-
 <script>
 import { mapActions, mapGetters } from 'vuex';
-
 oninput = "this.setCustomValidity('')"
-
 export default {
-    name: 'Login',
+    name: "Login",
     data: () => ({
         email: '',
         password: '',
@@ -67,7 +64,6 @@ export default {
         ...mapActions(["login"]),
         async onSubmit() {
             this.loading = true;
-
             try {
                 await this.login({ email: this.email, password: this.password });
                 this.$router.push('/');
@@ -84,14 +80,12 @@ export default {
             if (!vm.isUserLogined) {
                 return;
             }
-
             next("/");
             return false;
         });
     }
 }
 </script>        
-
 <style>
 .login {
     max-width: 350px;
@@ -100,18 +94,15 @@ export default {
     padding: 20px 0;
     border-radius: 5px;
 }
-
 .login h2 {
     color: #333;
     font-size: 32px;
     font-weight: 600;
 }
-
 input[type="text"],
 input[type="password"] {
   border: 0px solid var(--mainColor);
   border-bottom: 1px solid var(--mainColor);
-  /* display: block; */
   width: 100%;
   padding: 5px;
   margin: 12px 0;
@@ -119,11 +110,9 @@ input[type="password"] {
   outline: none;
   color: var(--mainColor);
 }
-
 input::placeholder{
    color: #333333;
 }
-
 .formButtonGroup {
     margin-top: 10px;
 }

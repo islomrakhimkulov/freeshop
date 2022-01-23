@@ -24,20 +24,16 @@
 
 <script>
 export default {
-    name: 'HomeCategory',
+    name: "HomeCategory",
 }
 </script>
-
 <style>
-
 .home-category-content {
     position: relative;
 }
-
 .home-category-img {
     position: relative;
 }
-
 .home-category-content::before {
     content: '';
     position: absolute;
@@ -48,7 +44,6 @@ export default {
     background-color: #fff;
     z-index: 1;
 }
-
 .home-category-content::after {
     content: '';
     position: absolute;
@@ -79,13 +74,10 @@ export default {
     background-color: #fff;
     z-index: 1;
 }
-
 .home-category-content img {
     transition: transform .5s ease;
 }
-
 .home-category-content img:hover {
     transform: scale(1.07);
 }
-
 </style>

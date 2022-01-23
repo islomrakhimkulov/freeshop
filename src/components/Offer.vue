@@ -37,10 +37,9 @@
 
 <script>
 export default {
-    name: 'Offer',
+    name: "Offer",
 }
 </script>
-
 <style>
 .offer {
     background: #F5F6F9;
@@ -59,5 +58,4 @@ export default {
         padding: 40px 0 !important;
     }
 }
-
 </style>

@@ -52,7 +52,7 @@
 import StarRating from 'vue-star-rating'
 import { mapGetters, mapActions} from 'vuex'
 export default {
-    name: 'ProductsList',
+    name: "ProductsList",
     props: {},
     components: {
         StarRating
@@ -93,7 +93,6 @@ export default {
     }
 }
 </script>
-
 <style>
 .cart-data h2 {
     position: relative;
@@ -119,7 +118,6 @@ export default {
 .card:hover {
     box-shadow: 0px 7px 17px rgba(255, 24, 80, 0.4);
 }
-
 .card-body {
     padding: 0.5rem 0.5rem;
 }
@@ -135,7 +133,6 @@ export default {
     font-size: 18px;
     color: var(--mainColor);
 }
-
 .card-feature-details {
     position:absolute;
     display: none;

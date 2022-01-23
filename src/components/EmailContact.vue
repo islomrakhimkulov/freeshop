@@ -5,20 +5,25 @@
             <p>Har oy siz uchun maxsus chegirma taqdim etiladi</p>
             <p>{{ input }}</p>
             <div class="py-3">
-                <input v-model="input" class="emailContactInput me-3" type="text" placeholder="E-mail address ...">
-                <button class="btn btnColor text-uppercase" @click="saw(item)">Get Coupon Now</button> 
+                <input 
+                  v-model="input" 
+                  class="emailContactInput me-3"
+                   type="text" 
+                   placeholder="E-mail address ..."
+                >
+                <button @click="test(item)" class="btn btnColor text-uppercase">Get Coupon Now</button> 
             </div>
         </div>
     </div>
 </template>
 <script>
 export default {
-    name: 'EmailContact',
+    name: "EmailContact",
     data: () => ({
-        input: '',
+        input: "",
     }),
     methods: {
-        saw(item) {
+        test(item) {
             this.input = item
         }
     }

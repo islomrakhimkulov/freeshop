@@ -24,7 +24,7 @@
 <script>
 import { mapGetters,mapActions } from 'vuex'
 export default {
-    name: 'CartCheckout',
+    name: "CartCheckout",
     data: () => ({}),                                                                                                                   
     computed: {
         ...mapGetters([

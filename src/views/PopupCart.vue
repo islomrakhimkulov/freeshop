@@ -20,7 +20,7 @@
 <script>
 import {mapGetters, mapActions} from 'vuex'
 export default {
-    name: 'PopupCart',
+    name: "PopupCart",
     computed: {
         ...mapGetters([
             'getProductsInCart'
@@ -42,7 +42,6 @@ export default {
         closePopup(){
           this.$emit('closePopup')
         }
-
     },
     mounted(){
       let vm = this;
@@ -74,7 +73,6 @@ export default {
     position: fixed;
     z-index: 1;
   }
-
   .box:after {
     content: '';
     width: 30px;
@@ -85,7 +83,6 @@ export default {
     top: -15px;
     right: 15px;
   }
-
   .box-item {
     width: 100%;
     height: 130px;
@@ -98,25 +95,20 @@ export default {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
   }
-
   .item-thumb {
     max-width: 70%;
     grid-column: 1/2;
     grid-row: 1/4;
     align-self: center;
   }
-
   .item-name {
     grid-column: 2/4;
     grid-row: 1/2;
     font-weight: normal;
   }
-
   .item-amount {
     grid-column: 2/3;
     grid-row: 2/4;
     color: #ddd;
   }
-
-  
 </style>

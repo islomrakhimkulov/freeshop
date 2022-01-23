@@ -34,9 +34,9 @@
                             </p>
                             <div class="btnGroup py-3 d-flex align-items-center justify-content-between">
                                 <div>
-                                    <button class="btn calcBtn calcDecrementBtn" @click="decrement(dec)">-</button>
+                                    <button @click="decrement(dec)" class="btn calcBtn calcDecrementBtn" >-</button>
                                     <button class="btn calcQuantity">{{ quantity }}</button>
-                                    <button class=" btn calcBtn calcIncrementBtn" @click="increment()">+</button>
+                                    <button @click="increment()" class=" btn calcBtn calcIncrementBtn">+</button>
                                 </div>
                                 <div>
                                     <h3>Total:{{ total }}</h3>
@@ -44,7 +44,7 @@
                             </div>
                             <div class="addToCard py-4">                            
                                 <div class="d-flex">
-                                    <button class="btn text-uppercase addToCardBtn" @click="addProductToCart(product)">
+                                    <button @click="addProductToCart(product)" class="btn text-uppercase addToCardBtn">
                                         <i class="fas fa-shopping-cart"></i> Add to card
                                     </button>
                                     <button class="btn calcBtn mx-2">
@@ -60,9 +60,7 @@
                 </div>
                 </div>
             </div>
-        
         </div>
-       
     </div>
 </template>
 
@@ -70,7 +68,7 @@
 import StarRating from "vue-star-rating";
 import { mapActions } from "vuex";
 export default {
-    name: 'ProductItemDetail',
+    name: "ProductItemDetail",
     components: {
         StarRating
     },
@@ -104,7 +102,6 @@ export default {
         ]),
         addProductToCart(product) {
             this.addProduct(product);
-            console.log(this.product);
         },
         addCurrentProduct(product) {
             this.currentProduct(product);

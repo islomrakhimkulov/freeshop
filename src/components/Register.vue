@@ -57,7 +57,7 @@
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 oninput="this.setCustomValidity('')";
 export default {
-    name: 'Register',
+    name: "Register",
     data: () => ({
         username: '',
         email: '',
@@ -89,13 +89,9 @@ export default {
 }
 </script>
 <style>
-
 .login h2 {
     color: #333;
     font-size: 25px;
     font-weight: 600;
 }
-
-
-
 </style>
