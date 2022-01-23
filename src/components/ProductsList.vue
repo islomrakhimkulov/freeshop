@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row gy-3">
                 <div class="col-md-3 col-sm-4" v-for="product in products" :key="product.id">
-                    <router-link to="/product/:id">
+                    <router-link :to="{name: 'ProductItemDetail', params: { id: product.id }}" >
                         <div class="card">
                             <div class="card-feature">
                                 <img class="card-img-top" :src="product.images" alt="">
@@ -69,14 +69,14 @@ export default {
         ...mapGetters({
             products: "getAllProducts",
         }),
-        routeTo() {
-            return { 
-                name: "ProductItemDetail", 
-                params: { 
-                    id: this.product.id
-                } 
-            };
-        }
+        // routeTo() {
+        //     return { 
+        //         name: "ProductItemDetail", 
+        //         params: { 
+        //             id: this.product.id
+        //         } 
+        //     };
+        // }
     },
     methods: {
         ...mapActions([
@@ -85,6 +85,7 @@ export default {
         ]),
         addProductToCart(product) {
             this.addProduct( product );
+            console.log(this.products[0].rating);
         },
         addCurrentProduct(product) {
             this.currentProduct(product);
@@ -149,5 +150,10 @@ export default {
     color: #fff;
     padding: 5px 6px;
     margin: 5px 0;
+}
+@media only screen and (max-width: 768px) {
+    .card-feature-details {
+        display: block;
+    }
 }
 </style>

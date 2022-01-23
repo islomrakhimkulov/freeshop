@@ -247,6 +247,11 @@ export default {
         left: 250px;
         right: auto;
     }
+    .total-quantity {
+        position: absolute !important;
+        left: 290px;
+        top: -5px;
+    }
 }
 
 @media only screen and (max-width: 768px) {
@@ -257,14 +262,20 @@ export default {
     position: relative !important;
     }
     .total-quantity {
-        position: absolute !important;
-        right: 155px;
+        right: 285px;
         top: -5px;
     }
     .cart {
         left: 50px;
         right: auto;
     }
+    .card-feature-details {
+        display: block;
+    }
 }
-    
+@media (min-width: 490px) and (max-width: 520px) {
+    .total-quantity {
+        right: 270px;
+    }
+}
 </style>

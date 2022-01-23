@@ -11,7 +11,7 @@
             <div class="d-flex justify-content-between align-items-center" v-if="hasProduct()">
                 <span>Jami:$ {{ totalPrice()}}</span>
                 <router-link to="/checkout">
-                    <button  class="btn btnColor" @click="showPopupCart">Buyurtmalar</button>
+                    <button  class="btn btnColor">Buyurtmalar</button>
                 </router-link>
             </div>
         </div>

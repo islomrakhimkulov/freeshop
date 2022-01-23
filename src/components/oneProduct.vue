@@ -1,12 +1,12 @@
 <template>
-    <div class="ProductItemDetails">
-        <div class="container">
-            <div class="py-4">
-            <h3 class="text-center">id:{{ this.$route.params.id }}</h3>
-            <div class="row">
+    <div>
+        <div v-for="item in oneProduct" :key="item.id">
+            {{ item.name }}
+        </div>
+        <div class="row">
                 <div class="col-md-4 col-sm-12">
                     <div>
-                        <img class="mx-md-auto" :src="require('../assets/images/products-list/products-8.png')" alt="">
+                        <img class="mx-md-auto" :src="oneProduct[0].images" alt="">
                     </div>
                 </div>
                 <div class="col-md-8 col-sm-12">
@@ -14,7 +14,7 @@
                         <div class="card-body">
                             <h3 class="product-item-title py-2">Voyage Yoga Bag</h3>
                             <div class="d-flex align-items-center py-2">
-                                <span class="product-item-price me-2 py-3">${{ price.toFixed(2) }}</span>
+                                <span class="product-item-price me-2 py-3">${{oneProduct[0].price.toFixed(2) }}</span>
                                 <div class="star-rating">
                                     <star-rating 
                                         :v-model="rating"
@@ -44,7 +44,7 @@
                             </div>
                             <div class="addToCard py-4">                            
                                 <div class="d-flex">
-                                    <button class="btn text-uppercase addToCardBtn" @click="addProductToCart(product)">
+                                    <button class="btn text-uppercase addToCardBtn" @click="addProductToCart(oneProduct[0])">
                                         <i class="fas fa-shopping-cart"></i> Add to card
                                     </button>
                                     <button class="btn calcBtn mx-2">
@@ -60,105 +60,19 @@
                 </div>
                 </div>
             </div>
-        
-        </div>
-       
-    </div>
 </template>
-
 <script>
-import StarRating from "vue-star-rating";
-import { mapActions } from "vuex";
 export default {
-    name: 'ProductItemDetail',
-    components: {
-        StarRating
-    },
-    props: {
-        product: {
-            type: Object,
-            default: () => ({})
-        },
-    },
-    data: () => ({
-        quantity: 1,
-        price: 250,
-        total: null,
-    }),
-    methods: {
-        increment() {
-            this.quantity++;
-            this.total = this.quantity * this.price;
-        },
-        decrement() {
-            if( this.quantity > 0) {
-                this.quantity --;
-                this.total = this.total - this.price
-            } else {
-                return this.quantity
-            }
-        },
-        ...mapActions([
-            "addProduct",
-            "currentProduct"
-        ]),
-        addProductToCart(product) {
-            this.addProduct(product);
-            console.log(this.product);
-        },
-        addCurrentProduct(product) {
-            this.currentProduct(product);
+    name: 'oneProduct',
+    data: () => ({}),
+    computed: {
+        oneProduct() {
+            return this.$store.state.products
         }
-    },
-    mounted() {
-        this.total = this.quantity * this.price
-    },
+    }
 }
 </script>
 
-<style >
-.product-item-title {
-    font-weight: 600;
-    font-size: 24px;
-    color: #333;
-    line-height: 24px;
-    margin-block: 0px;
-}
-.product-item-price {
-    font-weight: 500;
-    font-size: 24px;
-    color: var(--mainColor);
-}
-.product-item-text {
-    font-weight: 400;
-    font-size: 18px;
-}
-.ProductItemDetails .btn {
-    padding: 6px 24px;
-    border-radius: 0;
-    border: 2px solid #ebebeb;   
-    font-weight: 400;
-}
-.addToCardBtn {
-    background-color: var(--mainColor);
-    border: none !important;
-    color: #fff !important;
-    border: none;
-}
-.addToCard .btn {
-    color: var(--mainColor);
-}
-.addToCard .btn:hover {
-    background-color: var(--mainColor) !important;
-    border: 2px solid var(--mainColor);
-    color: #fff;
-}
-.calcQuantity {
-    background-color: #fff;
-    font-size: 24px;
-}
-.calcBtn {
-    background-color: #ebebeb !important;
-    font-size: 24px;
-}
+<style scoped> 
+
 </style>

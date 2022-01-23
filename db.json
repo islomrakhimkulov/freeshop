@@ -2,7 +2,7 @@
     "products": [
         {
             "id":1,
-            "name":"nmadir-1",
+            "name":"Cruise Dual Analog",
             "price":250,
             "rating":4,
             "images":[
@@ -11,7 +11,7 @@
         },
         {
             "id":2,
-            "name":"2-title",
+            "name":"Crown Summit Backpack",
             "price":200,
             "rating":4,
             "images":[
@@ -20,7 +20,7 @@
         },
         {
             "id":3,
-            "name":"3-bu",
+            "name":"Joust Duffle Bag",
             "price":400,
             "rating":2,
             "images":[
@@ -29,7 +29,7 @@
         },
         {
             "id":4,
-            "name":"5-bu",
+            "name":"Voyage Yoga Bag",
             "price":300,
             "rating":4,
             "images":[
@@ -38,7 +38,7 @@
         },
         {
             "id":5,
-            "name":"title-2",
+            "name":"Compete Track Tote",
             "price":250,
             "rating":1,
             "images":[
@@ -47,7 +47,7 @@
         },
         {
             "id":6,
-            "name":"6-bu",
+            "name":"Sprite Yoga Companion Kit",
             "price":280,
             "rating":3,
             "images":[
@@ -56,7 +56,7 @@
         },
         {
             "id":7,
-            "name":"7-dadir",
+            "name":"Wine Red Asymmetric",
             "price":220,
             "rating":4,
             "images":[
@@ -65,7 +65,7 @@
         },
         {
             "id":8,
-            "name":"8-sarlavhadir",
+            "name":"Skater Dress",
             "price":250,
             "rating":4,
             "images":[
