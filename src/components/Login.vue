@@ -1,5 +1,8 @@
 <template>
-    <div class="login  shadow text-center" >
+<div class="text-center">
+    <p>Email: user@gmail.com</p>
+    <p>Parol: user@gmail.com</p>
+    <div class="login  shadow text-center">
         <h2 class="text-uppercase">Kirish</h2>
         <div class="container ">
             <form id="login-form" @submit.prevent="onSubmit()">
@@ -46,6 +49,8 @@
             </form>
         </div>
     </div>
+</div>
+    
 </template>
 <script>
 import { mapActions, mapGetters } from 'vuex';
